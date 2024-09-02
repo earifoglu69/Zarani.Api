@@ -12,9 +12,9 @@ namespace Zarani.Api.Controllers
        [Route("api/[controller]")]
        public class AccountController : BaseController<AccountController>
        {
-           private readonly UserManager<ApplicationUser> _userManager;
-           private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ITokenService _tokenService;
+           public readonly UserManager<ApplicationUser> _userManager;
+        public readonly SignInManager<ApplicationUser> _signInManager;
+        public readonly ITokenService _tokenService;
            public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ITokenService tokenService)
            {
                _userManager = userManager;
