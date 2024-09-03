@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Compile Include="..\Zarani.Api.Test\Zarani.Api.Test\Controller\ContentControllerTests.cs" Link="ContentControllerTests.cs" />
+    <Compile Include="..\Zarani.Api.Test\Zarani.Api.Test\Controller\ProductControllerTests.cs" Link="ProductControllerTests.cs" />
   </ItemGroup>
 
   <ItemGroup>

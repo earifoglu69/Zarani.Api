@@ -36,6 +36,10 @@ namespace Zarani.Api.Controllers
         [Route("GetProductById/{id}")]
         public async Task<IActionResult> GetProductById(int id)
         {
+            if (id <= 0)
+            {
+                return BadRequest("Parametre hatası");
+            }
             var result = await _productService.GetProductById(id);
             if (result.Data != null)
             {

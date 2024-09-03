@@ -1,4 +1,5 @@
 ﻿using AutoMapper.Internal.Mappers;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Zarani.Application.Mapper;
 using Zarani.Common.IOC;
 using Zarani.Domain.BaseResponse;
@@ -29,6 +30,14 @@ namespace Zarani.Application.Services.Product
         // Create
         public async Task<BaseResponse<ProductDto>> AddProduct(ProductDto productDto)
         {
+            if (productDto == null)
+            {
+                return new BaseResponse<ProductDto>()
+                {
+                    HasError = true,
+                    ErrorMessage = "Parametre null hatası"
+                };
+            }
             var product = ObjectMapper.Mapper.Map<Zarani.Infrastructure.Models.ProductEntity>(productDto);
             await _unitOfWork.GetRepository<Zarani.Infrastructure.Models.ProductEntity>().AddAsync(product);
             await _unitOfWork.SaveChangesAsync();
@@ -41,6 +50,14 @@ namespace Zarani.Application.Services.Product
         // Read
         public async Task<BaseResponse<ProductDto>> GetProductById(int id)
         {
+            if (id<=0)
+            {
+                return new BaseResponse<ProductDto>()
+                {
+                    HasError = true,
+                    ErrorMessage = "Parametre null hatası"
+                };
+            }
             var product = await _unitOfWork.GetRepository<Zarani.Infrastructure.Models.ProductEntity>().GetByIdAsync(id);
             var productDto = ObjectMapper.Mapper.Map<ProductDto>(product);
             return new BaseResponse<ProductDto>()
