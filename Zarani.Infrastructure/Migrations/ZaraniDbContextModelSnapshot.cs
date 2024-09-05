@@ -274,7 +274,7 @@ namespace Zarani.Infrastructure.Migrations
                     b.Property<string>("File3AltText")
                         .HasColumnType("text");
 
-                    b.Property<int>("HeaderId")
+                    b.Property<int?>("HeaderId")
                         .HasColumnType("integer");
 
                     b.Property<bool>("IsActive")
@@ -283,7 +283,7 @@ namespace Zarani.Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("ModuleId")
+                    b.Property<int?>("ModuleId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
@@ -301,7 +301,7 @@ namespace Zarani.Infrastructure.Migrations
                     b.Property<int?>("Order")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ParentId")
+                    b.Property<int?>("ParentId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Permalink")
@@ -344,6 +344,245 @@ namespace Zarani.Infrastructure.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("Contents");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Tüm Kategoriler",
+                            Permalink = ""
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Tv Koltuğu",
+                            ParentId = 1,
+                            Permalink = "tv-koltugu"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Baba Koltuğu",
+                            ParentId = 1,
+                            Permalink = "baba-koltugu"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Hasta Koltuğu",
+                            ParentId = 1,
+                            Permalink = "hasta-koltugu"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Sinema Koltuğu",
+                            ParentId = 1,
+                            Permalink = "sinema-koltugu"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Üst Menü",
+                            Permalink = ""
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Anasayfa",
+                            ParentId = 6,
+                            Permalink = ""
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Kargom Nerede",
+                            ParentId = 6,
+                            Permalink = "kargom-nerede"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Yardım",
+                            ParentId = 6,
+                            Permalink = "yardim"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Siparişlerim",
+                            ParentId = 6,
+                            Permalink = "siparislerim"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Orta Menü",
+                            Permalink = "iletisim"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "İletisim",
+                            ParentId = 11,
+                            Permalink = "iletisim"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Yeni Ürünler",
+                            ParentId = 11,
+                            Permalink = "yeni-urunler"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Fırsat Ürünleri",
+                            ParentId = 11,
+                            Permalink = "firsat-urunleri"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Orta Menü",
+                            Permalink = ""
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "İletisim",
+                            ParentId = 15,
+                            Permalink = "iletisim"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Yeni Ürünler",
+                            ParentId = 15,
+                            Permalink = "yeni-urunler"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Fırsat Ürünleri",
+                            ParentId = 15,
+                            Permalink = "firsat-urunleri"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Kurumsal",
+                            Permalink = ""
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Güvenli Alışveriş",
+                            ParentId = 19,
+                            Permalink = "iletisim"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Hakkımızda",
+                            ParentId = 19,
+                            Permalink = "yeni-urunler"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsDeleted = false,
+                            ModuleId = 1,
+                            Name = "Bize Ulaşın",
+                            ParentId = 19,
+                            Permalink = "firsat-urunleri"
+                        });
                 });
 
             modelBuilder.Entity("Zarani.Infrastructure.Models.ModuleEntity", b =>
@@ -522,21 +761,15 @@ namespace Zarani.Infrastructure.Migrations
                 {
                     b.HasOne("Zarani.Infrastructure.Models.ContentEntity", "Header")
                         .WithMany()
-                        .HasForeignKey("HeaderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("HeaderId");
 
                     b.HasOne("Zarani.Infrastructure.Models.ModuleEntity", "Module")
                         .WithMany()
-                        .HasForeignKey("ModuleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ModuleId");
 
                     b.HasOne("Zarani.Infrastructure.Models.ContentEntity", "Parent")
                         .WithMany()
-                        .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ParentId");
 
                     b.Navigation("Header");
 

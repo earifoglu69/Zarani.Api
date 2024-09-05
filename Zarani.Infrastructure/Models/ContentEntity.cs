@@ -6,15 +6,15 @@ namespace Zarani.Infrastructure.Models
     public class ContentEntity : BaseEntity
     {
         [ForeignKey("Module")]
-        public int ModuleId { get; set; }
+        public int? ModuleId { get; set; }
         public virtual ModuleEntity Module { get; set; }
 
         [ForeignKey("Parent")]
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
         public virtual ContentEntity Parent { get; set; }
 
         [ForeignKey("Header")]
-        public int HeaderId { get; set; }
+        public int? HeaderId { get; set; }
         public virtual ContentEntity Header { get; set; }
 
         public int? Order { get; set; }
