@@ -10,11 +10,11 @@ namespace Zarani.Infrastructure.Models
         public virtual ModuleEntity Module { get; set; }
 
         [ForeignKey("Parent")]
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
         public virtual ContentEntity Parent { get; set; }
 
         [ForeignKey("Header")]
-        public int HeaderId { get; set; }
+        public int? HeaderId { get; set; }
         public virtual ContentEntity Header { get; set; }
 
         public int? Order { get; set; }

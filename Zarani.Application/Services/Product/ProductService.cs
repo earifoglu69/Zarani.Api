@@ -58,7 +58,7 @@ namespace Zarani.Application.Services.Product
                     ErrorMessage = "Parametre null hatası"
                 };
             }
-            var product = await _unitOfWork.GetRepository<Zarani.Infrastructure.Models.ProductEntity>().GetByIdAsync(id);
+            var product = _unitOfWork.GetRepository<Zarani.Infrastructure.Models.ProductEntity>().GetByIdAsync(id).Result;
             var productDto = ObjectMapper.Mapper.Map<ProductDto>(product);
             return new BaseResponse<ProductDto>()
             {
@@ -81,7 +81,7 @@ namespace Zarani.Application.Services.Product
         // Delete
         public async Task<BaseResponse<bool>> DeleteProduct(int id)
         {
-            var product = await _unitOfWork.GetRepository<Zarani.Infrastructure.Models.ProductEntity>().GetByIdAsync(id);
+            var product = _unitOfWork.GetRepository<Zarani.Infrastructure.Models.ProductEntity>().GetByIdAsync(id).Result;
             if (product != null)
             {
                 await _unitOfWork.GetRepository<Zarani.Infrastructure.Models.ProductEntity>().DeleteAsync(product);

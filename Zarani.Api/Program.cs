@@ -15,6 +15,7 @@ using Swashbuckle.AspNetCore.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using Zarani.Common.Settings;
 using Microsoft.Extensions.Options;
+using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -54,6 +55,10 @@ builder.Services.AddSwaggerGen(options =>
 
     // Add operation filter for security requirements.
     options.OperationFilter<SecurityRequirementsOperationFilter>();
+    // Set the comments path for the Swagger JSON and UI.
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    options.IncludeXmlComments(xmlPath);
 });
 
 
