@@ -15,13 +15,16 @@ using Swashbuckle.AspNetCore.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using Zarani.Common.Settings;
 using Microsoft.Extensions.Options;
+using System.Reflection;
+using System.IO;
+
 var builder = WebApplication.CreateBuilder(args);
 
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
     .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
-.AddEnvironmentVariables();
+    .AddEnvironmentVariables();
 
 // Add Identity
 builder.Services.AddDbContext<ZaraniDbContext>(dbContextOptionsBuilder => dbContextOptionsBuilder.UseNpgsql(builder.Configuration.GetConnectionString("ZaraniConnection")));
@@ -54,9 +57,12 @@ builder.Services.AddSwaggerGen(options =>
 
     // Add operation filter for security requirements.
     options.OperationFilter<SecurityRequirementsOperationFilter>();
+
+    // Include XML comments (assuming the XML file is in the same directory as the assembly)
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    options.IncludeXmlComments(xmlPath);
 });
-
-
 
 builder.Services.UseIocLoader();
 ServiceModule.Configure(builder.Services, builder.Configuration);

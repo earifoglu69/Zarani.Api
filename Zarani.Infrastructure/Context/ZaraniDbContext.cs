@@ -6,8 +6,7 @@ namespace Zarani.Infrastructure.Context
 {
     public class ZaraniDbContext : IdentityDbContext<ApplicationUser>
     {
-
-        public ZaraniDbContext( DbContextOptions<ZaraniDbContext> options) : base(options)
+        public ZaraniDbContext(DbContextOptions<ZaraniDbContext> options) : base(options)
         {
         }
 
@@ -20,5 +19,6 @@ namespace Zarani.Infrastructure.Context
         public DbSet<ProductEntity> Products { get; set; } = null!;
         public DbSet<ModuleEntity> Modules { get; set; } = null!;
         public DbSet<ContentEntity> Contents { get; set; } = null!;
+        public DbSet<SliderEntity> Sliders { get; set; } = null!;
     }
 }

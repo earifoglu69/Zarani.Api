@@ -7,10 +7,13 @@
     <UserSecretsId>dbc5c39e-1db1-4ccb-b09d-b78b4551cbfd</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="..\Zarani.Api.Test\Zarani.Api.Test\Controller\ContentControllerTests.cs" Link="ContentControllerTests.cs" />
+    <Compile Include="..\Zarani.Api.Test\Zarani.Api.Test\Controller\ModuleControllerTests.cs" Link="ModuleControllerTests.cs" />
   </ItemGroup>
 
   <ItemGroup>

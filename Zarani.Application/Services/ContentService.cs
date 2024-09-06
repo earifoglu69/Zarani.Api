@@ -24,7 +24,7 @@ namespace Zarani.Application.Services.Content
             var content = ObjectMapper.Mapper.Map<ContentEntity>(contentDto);
             await _unitOfWork.GetRepository<ContentEntity>().AddAsync(content);
             await _unitOfWork.SaveChangesAsync();
-            return new BaseResponse<ContentDto>()
+            return new BaseResponse<ContentDto>
             {
                 Data = ObjectMapper.Mapper.Map<ContentDto>(content)
             };
@@ -34,8 +34,15 @@ namespace Zarani.Application.Services.Content
         public async Task<BaseResponse<ContentDto>> GetContentById(int id)
         {
             var content = await _unitOfWork.GetRepository<ContentEntity>().GetByIdAsync(id);
+            if (content == null)
+            {
+                return new BaseResponse<ContentDto>
+                {
+                    ErrorMessage = "Content not found"
+                };
+            }
             var contentDto = ObjectMapper.Mapper.Map<ContentDto>(content);
-            return new BaseResponse<ContentDto>()
+            return new BaseResponse<ContentDto>
             {
                 Data = contentDto
             };
@@ -43,9 +50,9 @@ namespace Zarani.Application.Services.Content
 
         public async Task<BaseResponse<List<ContentDto>>> GetAllContents()
         {
-            var contentEntities = (await _unitOfWork.GetRepository<ContentEntity>().GetAllAsync()).ToList();
+            var contentEntities = await _unitOfWork.GetRepository<ContentEntity>().GetAllAsync();
             var contents = ObjectMapper.Mapper.Map<List<ContentDto>>(contentEntities);
-            return new BaseResponse<List<ContentDto>>()
+            return new BaseResponse<List<ContentDto>>
             {
                 Data = contents
             };
@@ -57,7 +64,7 @@ namespace Zarani.Application.Services.Content
             var content = ObjectMapper.Mapper.Map<ContentEntity>(contentDto);
             await _unitOfWork.GetRepository<ContentEntity>().UpdateAsync(content);
             await _unitOfWork.SaveChangesAsync();
-            return new BaseResponse<ContentDto>()
+            return new BaseResponse<ContentDto>
             {
                 Data = ObjectMapper.Mapper.Map<ContentDto>(content)
             };
@@ -67,21 +74,22 @@ namespace Zarani.Application.Services.Content
         public async Task<BaseResponse<bool>> DeleteContent(int id)
         {
             var content = await _unitOfWork.GetRepository<ContentEntity>().GetByIdAsync(id);
-            if (content != null)
+            if (content == null)
             {
-                await _unitOfWork.GetRepository<ContentEntity>().DeleteAsync(content);
-                await _unitOfWork.SaveChangesAsync();
-                return new BaseResponse<bool>()
+                return new BaseResponse<bool>
                 {
-                    Data = true
+                    Data = false,
+                    ErrorMessage = "Content not found"
                 };
             }
-            return new BaseResponse<bool>()
+            await _unitOfWork.GetRepository<ContentEntity>().DeleteAsync(content);
+            await _unitOfWork.SaveChangesAsync();
+            return new BaseResponse<bool>
             {
-                Data = false,
-                ErrorMessage = "Content not found"
+                Data = true
             };
         }
+
         // Search
         public async Task<BaseResponse<List<ContentDto>>> SearchContents(SearchContentRequest request)
         {
@@ -92,9 +100,9 @@ namespace Zarani.Application.Services.Content
                 (string.IsNullOrEmpty(request.Permalink) || content.Permalink == request.Permalink) &&
                 (!request.HeaderId.HasValue || content.HeaderId == request.HeaderId.Value);
 
-            var contentEntities = (await _unitOfWork.GetRepository<ContentEntity>().GetAllAsync(filter)).ToList();
+            var contentEntities = await _unitOfWork.GetRepository<ContentEntity>().GetAllAsync(filter);
             var contents = ObjectMapper.Mapper.Map<List<ContentDto>>(contentEntities);
-            return new BaseResponse<List<ContentDto>>()
+            return new BaseResponse<List<ContentDto>>
             {
                 Data = contents
             };

@@ -14,6 +14,8 @@ namespace Zarani.Application.Mapper
             CreateMap<ContentDto, ContentEntity>();
             CreateMap<ModuleDto, ModuleEntity>();
             CreateMap<ModuleEntity, ModuleDto>();
+            CreateMap<SliderDto, SliderEntity>();
+            CreateMap<SliderEntity, SliderDto>();
         }
     }
 }
