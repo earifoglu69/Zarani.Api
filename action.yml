@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  zarani.api:
+    image: ${DOCKER_REGISTRY-}zaraniapi
+    build:
+      context: .
+      dockerfile: Zarani.Api/Dockerfile
+    ports:
+        - "5000:5000"
+        - "5001:5001"
+   
+  zarani.database:
+    image: postgres:latest
+    container_name: zarani.database
+    environment:
+      POSTGRES_DB : ZaraniWebDb
+      POSTGRES_USER : postgres
+      PGUSER : postgres
+      POSTGRES_PASSWORD : postgres
+    volumes:
+     - ./.containers/product-db:/var/lib/postgresql/data
+    ports:
+     - 5432:5432 
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
