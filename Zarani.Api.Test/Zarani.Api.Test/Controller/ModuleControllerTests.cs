@@ -15,8 +15,6 @@ namespace Zarani.Api.Test.Controller
     /// </summary>
     public class ModuleControllerTests
     {
-
-
         private readonly Mock<IModuleService> _moduleServiceMock;
         private readonly ModuleController _moduleController;
 
