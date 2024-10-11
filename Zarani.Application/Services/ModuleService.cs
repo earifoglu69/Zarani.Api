@@ -22,9 +22,10 @@ namespace Zarani.Application.Services.Module
             var module = ObjectMapper.Mapper.Map<ModuleEntity>(moduleDto);
             await _unitOfWork.GetRepository<ModuleEntity>().AddAsync(module);
             await _unitOfWork.SaveChangesAsync();
+            var data = ObjectMapper.Mapper.Map<ModuleDto>(module);
             return new BaseResponse<ModuleDto>()
             {
-                Data = ObjectMapper.Mapper.Map<ModuleDto>(module)
+                Data = data
             };
         }
 
