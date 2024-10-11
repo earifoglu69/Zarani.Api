@@ -23,8 +23,11 @@ namespace Zarani.Application.Services
         }
         public Task<LoginResponse> CreateTokenByUser(ClaimsPrincipal loginResult)
         {
-            DateTime accessTokenExpiration = DateTime.Now.AddHours(_tokenOptionsSetting.AccessTokenExpiration);
-            DateTime refreshTokenExpiration = DateTime.Now.AddHours(_tokenOptionsSetting.RefreshTokenExpiration);
+            var accessTokenExpiration = DateTime.Now.AddHours(_tokenOptionsSetting.AccessTokenExpiration);
+            var refreshTokenExpiration = DateTime.Now.AddHours(_tokenOptionsSetting.RefreshTokenExpiration);
+
+            var accessTokenExpiration2 = DateTime.Now.AddHours(_tokenOptionsSetting.AccessTokenExpiration);
+            var refreshTokenExpiration3 = DateTime.Now.AddHours(_tokenOptionsSetting.RefreshTokenExpiration);
 
             SecurityKey securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptionsSetting.SecurityKey);
             SigningCredentials signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
