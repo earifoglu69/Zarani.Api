@@ -27,7 +27,7 @@ namespace Zarani.Application.Services
             var refreshTokenExpiration = DateTime.Now.AddHours(_tokenOptionsSetting.RefreshTokenExpiration);
 
             var accessTokenExpiration2 = DateTime.Now.AddHours(_tokenOptionsSetting.AccessTokenExpiration);
-            var refreshTokenExpiration3 = DateTime.Now.AddHours(_tokenOptionsSetting.RefreshTokenExpiration)
+            var refreshTokenExpiration3 = DateTime.Now.AddHours(_tokenOptionsSetting.RefreshTokenExpiration);
 
             var accessTokenExpiration4 = DateTime.Now.AddHours(_tokenOptionsSetting.AccessTokenExpiration);
             var refreshTokenExpiration4 = DateTime.Now.AddHours(_tokenOptionsSetting.RefreshTokenExpiration);
