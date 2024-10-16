@@ -22,11 +22,12 @@ namespace Zarani.Application.Services.Content
         public async Task<BaseResponse<ContentDto>> AddContent(ContentDto contentDto)
         {
             var content = ObjectMapper.Mapper.Map<ContentEntity>(contentDto);
-            await _unitOfWork.GetRepository<ContentEntity>().AddAsync(content);
+            var newContent = await _unitOfWork.GetRepository<ContentEntity>().AddAsync(content);
             await _unitOfWork.SaveChangesAsync();
+            var mappedContent = ObjectMapper.Mapper.Map<ContentDto>(content);
             return new BaseResponse<ContentDto>()
             {
-                Data = ObjectMapper.Mapper.Map<ContentDto>(content)
+                Data = ObjectMapper.Mapper.Map<ContentDto>(mappedContent)
             };
         }
 
